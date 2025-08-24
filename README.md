@@ -1,5 +1,4 @@
-# Product-Classification---Iter7
-# Multilingual Product Classification System
+# Multilingual Product Classification System -- Iter 7
 Automated product classification system using multilingual embeddings and semantic similarity for Arabic and English product names.
 
 ## Overview
