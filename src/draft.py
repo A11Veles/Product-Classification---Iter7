@@ -29,7 +29,7 @@ td_db.connect()
     
 
 def insert_products_in_db():
-    df = pd.read_csv(FULL_DATA_SET_DATA_PATH)
+    df = pd.read_csv(TRAIN_VAL_DATA_PATH)
     df.rename(columns={"Item_Name": "product_name"}, inplace=True)
 
     df.drop_duplicates(subset=["product_name"], inplace=True)
@@ -97,7 +97,7 @@ def translate_products():
     
 def insert_classes_in_db():
     # Inserting the labels
-    df = pd.read_csv(FULL_DATA_SET_DATA_PATH)
+    df = pd.read_csv(TRAIN_VAL_DATA_PATH)
     df_class = df["class"].dropna().unique()
     df_classes = pd.DataFrame({"class_name": df_class})
     df_classes["id"] = df_classes.index
@@ -199,7 +199,7 @@ def load_product_emebddings():
     copy_to_sql(df_expanded, "p_embeddings", "demo_user", if_exists="replace")
 
 def load_class_emebddings():
-    df = pd.read_csv(FULL_DATA_SET_DATA_PATH)
+    df = pd.read_csv(TRAIN_VAL_DATA_PATH)
 
     df_class = df["class"].dropna().unique()
     df = pd.DataFrame({"class": df_class})
@@ -228,7 +228,7 @@ def calculate_in_db_similiraty():
     );
     """
     td_db.execute_query(q)
-
+    print("***Similarty table created")
     vector_cols = ", ".join([f"embed_{i}" for i in range(1024)])
 
     vector_cols_quoted = ", ".join([f"'embed_{i}'" for i in range(1024)])
@@ -261,10 +261,6 @@ def calculate_in_db_similiraty():
     """
     td_db.execute_query(classification_sql)
 
-    tdf = td_db.execute_query("SELECT * FROM demo_user.similiratiy_score")
-    tdf = DataFrame(tdf, False)
-    return tdf
-
 def results():
     results_query = f"""
     SELECT
@@ -283,6 +279,7 @@ def results():
 
     tdf = td_db.execute_query(results_query)
     df = pd.DataFrame(tdf)
+    df.dropna(inplace= True)
 
     return df
 
@@ -309,30 +306,51 @@ def translation_and_embeddings():
     load_product_emebddings()
     load_class_emebddings()
 
-def main():
-    print("Starting pipeline...")
-
-    translate_products()
-
+def prepare_data():
+    print("Preparing data: inserting...")
+    insert_products_in_db()
     insert_classes_in_db()
-
+    print("Preparing data: inserting Done, cleaning...")
+    clean_products_in_db()
     clean_classes_in_db()
-
+    print("Preparing data: cleaning Done, translating...")
+    translate_products()
+    print("Preparing data: translating Done, and generating embeddings...")
     create_product_embeddings()
-    print("Here...")
-
+    print("Preparing data: product embeddings Done, and loading embeddings...")
     load_product_emebddings()
-    print("loading in DB...")
+    print("Preparing data: loading product embeddings Done, generating class embeddings...")
     load_class_emebddings()
+    print("Data preparation complete.")
 
+def run_analysis():
+    print("Running analysis: calculating similarity and F1 score...")
     calculate_in_db_similiraty()
-
+    print("Cosine Similarity Done, generating F1 score...")
     df = results()
-
     f1_score = calulcate_f1(df)
-
     print(f"F1 Score: {f1_score}")
-    print(df.head(20))   
+    print(df.head(20))
+    print("Analysis complete.")
+
+
+def main():
+    prepare_data()
+    run_analysis()
+    # print("Starting pipeline...")
+    # translate_products()
+    # insert_classes_in_db()
+    # clean_classes_in_db()
+    # create_product_embeddings()
+    # print("Here...")
+    # load_product_emebddings()
+    # print("loading in DB...")
+    # load_class_emebddings()
+    # calculate_in_db_similiraty()
+    # df = results()
+    # f1_score = calulcate_f1(df)
+    # print(f"F1 Score: {f1_score}")
+    # print(df.head(20))   
 
 main()
 
