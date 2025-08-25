@@ -40,27 +40,104 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# @st.cache_data
+# def load_data():
+#     product_df = pd.read_csv(CLEANED_TEST_DATA_PATH)
+#     class_df = pd.read_csv(CLEANED_GPC_PATH)
+#     product_embedding_df = pd.read_csv(PRODUCT_TEST_EMBEDDINGS_PATH)
+#     class_embedding_df = pd.read_csv(CLASS_EMBEDDINGS_PATH)
+    
+#     product_full = product_embedding_df.merge(product_df, on="id")
+#     class_full = class_embedding_df.merge(class_df, on="id")
+    
+#     return product_full, class_full
+
+# @st.cache_data
+# def load_embeddings(_product_full, _class_full):
+
+#     products_embeddings = [json.loads(embedding) for embedding in _product_full["embeddings"].tolist()]
+#     products_embeddings = torch.tensor(products_embeddings, dtype=torch.float16, device=DEVICE)
+    
+#     classes_embeddings = [json.loads(embedding) for embedding in _class_full["embeddings"].tolist()]
+#     classes_embeddings = torch.tensor(classes_embeddings, dtype=torch.float16, device=DEVICE)
+    
+#     return products_embeddings, classes_embeddings
+
+
+DIM = 1024  # adjust if you used a different embedding dimension
+
+def _vcols(dim=DIM):
+    return ", ".join([f"v{i}" for i in range(1, dim+1)])
+
+def _vlist(df, dim=DIM):
+    # returns (n, dim) float32 numpy array from wide v1..vDIM
+    return df[[f"v{i}" for i in range(1, dim+1)]].to_numpy(dtype=np.float32, copy=False)
+
 @st.cache_data
 def load_data():
-    product_df = pd.read_csv(CLEANED_TEST_DATA_PATH)
-    class_df = pd.read_csv(CLEANED_GPC_PATH)
-    product_embedding_df = pd.read_csv(PRODUCT_TEST_EMBEDDINGS_PATH)
-    class_embedding_df = pd.read_csv(CLASS_EMBEDDINGS_PATH)
-    
-    product_full = product_embedding_df.merge(product_df, on="id")
-    class_full = class_embedding_df.merge(class_df, on="id")
-    
-    return product_full, class_full
+    """
+    Returns product_full, class_full dataframes:
+      product_full: columns -> id, cleaned_text (or Item_Name), ...
+      class_full:   columns -> id, class_name
+    """
+    with teradatasql.connect(host=TD_HOST, user=TD_USER, password=TD_PASS) as con:
+        # Products (text)
+        prod = pd.read_sql(
+            f"""
+            SELECT row_id AS id,
+                   COALESCE(Item_Name, '') AS cleaned_text
+            FROM {TD_DB}.train_data
+            ORDER BY id
+            """, con
+        )
+
+        # GPC classes (names) — if you have a GPC info table, join it here to get names.
+        # Fallback: use the code as the name.
+        gpc = pd.read_sql(
+            f"""
+            SELECT gpc_id AS id
+            FROM {TD_DB}.gpc_labels_fc
+            QUALIFY ROW_NUMBER() OVER (PARTITION BY gpc_id ORDER BY gpc_id)=1
+            ORDER BY id
+            """, con
+        )
+        gpc["class_name"] = gpc["id"].astype(str)
+
+    return prod, gpc
 
 @st.cache_data
 def load_embeddings(_product_full, _class_full):
+    """
+    Returns (products_embeddings, classes_embeddings) as torch tensors on DEVICE.
+    Reads v1..vDIM from your embedding tables.
+    """
+    with teradatasql.connect(host=TD_HOST, user=TD_USER, password=TD_PASS) as con:
+        # Product embeddings
+        prod_emb = pd.read_sql(
+            f"""
+            SELECT row_id AS id, {_vcols()} 
+            FROM {TD_DB}.train_embeddings_fc
+            ORDER BY id
+            """, con
+        )
+        # Keep only IDs we actually have text for
+        prod_emb = prod_emb.merge(_product_full[["id"]], on="id", how="inner").sort_values("id")
+        prod_vecs = _vlist(prod_emb)  # (n, DIM) float32
 
-    products_embeddings = [json.loads(embedding) for embedding in _product_full["embeddings"].tolist()]
-    products_embeddings = torch.tensor(products_embeddings, dtype=torch.float16, device=DEVICE)
-    
-    classes_embeddings = [json.loads(embedding) for embedding in _class_full["embeddings"].tolist()]
-    classes_embeddings = torch.tensor(classes_embeddings, dtype=torch.float16, device=DEVICE)
-    
+        # Class (GPC) embeddings
+        gpc_emb = pd.read_sql(
+            f"""
+            SELECT gpc_id AS id, {_vcols()}
+            FROM {TD_DB}.gpc_labels_fc
+            ORDER BY id
+            """, con
+        )
+        # Keep only IDs present in class_full
+        gpc_emb = gpc_emb.merge(_class_full[["id"]], on="id", how="inner").sort_values("id")
+        gpc_vecs = _vlist(gpc_emb)
+
+    products_embeddings = torch.tensor(prod_vecs, dtype=torch.float16, device=DEVICE)
+    classes_embeddings  = torch.tensor(gpc_vecs, dtype=torch.float16, device=DEVICE)
     return products_embeddings, classes_embeddings
 
 def detect_language(text):
