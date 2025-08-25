@@ -94,12 +94,8 @@ pip install --upgrade torch
 ## How to Test
 
 ### Test Database Connection
-```python
-from modules.db import TeradataDatabase
-td_db = TeradataDatabase()
-td_db.connect()
-print("✅ Database connection successful")
-td_db.disconnect()
+```bash
+python tests/test_db.py
 ```
 
 ### Test Model Loading
