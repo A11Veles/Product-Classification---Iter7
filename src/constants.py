@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).parents[1]
 
 DATA_PATH = BASE_DIR / "data"
 
-GPC_PATH = DATA_PATH / "gpc_sample.xlsx"
+GPC_PATH = DATA_PATH / "GPCMay25.xlsx"
 
 TRAIN_VAL_DATA_PATH = DATA_PATH / "train_val.csv"
 

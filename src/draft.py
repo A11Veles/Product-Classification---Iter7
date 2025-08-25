@@ -19,8 +19,7 @@ from constants import (
     CLEANED_GPC_PATH, CLEANED_TEST_DATA_PATH, TEST_DATA_PATH, E5_LARGE_INSTRUCT_CONFIG_PATH, 
     OPUS_TRANSLATION_CONFIG_PATH, DATA_PATH, PRODUCT_TRAIN_EMBEDDINGS_PATH, QWEN3_8B_CONFIG_PATH, VALIDATION_DATA_PATH,
     FULL_DATA_SET_DATA_PATH, PRODUCT_FULL_DATASET_EMBEDDINGS_PATH,  CLEANED_FULL_DATASET_DATA_PATH,
-    CLASS_EMBEDDINGS_PATH_QWEN, PRODUCT_FULL_DATASET_EMBEDDINGS__QWEN_PATH, TD_DB
-
+    CLASS_EMBEDDINGS_PATH_QWEN, PRODUCT_FULL_DATASET_EMBEDDINGS__QWEN_PATH, TD_DB, GPC_PATH
 )
 
 
@@ -333,10 +332,20 @@ def run_analysis():
     print(df.head(20))
     print("Analysis complete.")
 
+def load_gpc():
+    df = pd.read_excel(GPC_PATH)
+    segment_count = df['SegmentCode'].nunique()
+    family_count = df['FamilyCode'].nunique()
+    class_count = df['ClassCode'].nunique()
+    brick_count = df['BrickCode'].nunique()
+    attribute_count = df['AttributeCode'].nunique()
+    attribute_value_count = df['AttributeValueCode'].nunique()
+    print(f"Unique Segments Count: {segment_count} \nUnique Family Count: {family_count}\nUnique Class Count: {class_count}\nUnique Brick Count: {brick_count}\nUnique Attribute Count: {attribute_count}\nUnique Attribute Value Count: {attribute_value_count}")
 
 def main():
     prepare_data()
     run_analysis()
+    load_gpc()
     # print("Starting pipeline...")
     # translate_products()
     # insert_classes_in_db()
