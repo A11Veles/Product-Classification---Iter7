@@ -10,21 +10,20 @@ Key features:
 - **Semantic embeddings** - Uses state-of-the-art embedding model (E5-Large-Instruct)
 - **Vector similarity search** - Efficient classification using cosine similarity in Teradata
 - **Database integration** - Full pipeline integration with Teradata for scalable processing
-- **Performance metrics** - Automated F1-score calculation and evaluation
+- **Performance metrics** - F1-score calculation and evaluation
 
 ## Technology Stack
-- **Frontend**: Python-based pipeline with pandas for data processing
-- **Backend**: Python 3.9+ - Core application logic and model inference
+- **Frontend**: Python-based pipeline with streamlit
+- **Backend**: Python - Core application logic and model inference
 - **AI Models**: 
   - Multilingual E5-Large-Instruct (0.6B) - For text embeddings
-  - Helsinki-NLP OPUS-MT - For Arabic to English translation
+  - Helsinki-NLP OPUS-MT (0.2B) - For Arabic to English translation
 - **Database**: Teradata - Enterprise data warehouse with vector operations
-- **Model Optimization**: PyTorch, transformers, bitsandbytes - For model loading and quantization
-- **ML Framework**: sentence-transformers, scikit-learn - For embeddings and metrics
-- **Configuration**: dotenv - For environment variable management
-
+- **Model Optimization**: PyTorch, transformers, bitsandbytes - For model loading
+- **ML Framework**: sentence-transformers, scikit-learn
+  
 ## Important Files:
-- **Core Pipeline**: `draft.py` - Main processing pipeline with database operations
+- **Core Pipeline**: `main.py` - Main processing pipeline with database operations
 - **Model Definitions**: `modules/models.py` - AI model classes and configurations
 - **Database Operations**: `modules/db.py` - Teradata connection and query handling
 - **Utilities**: `utils.py` - Text processing and model loading utilities
@@ -36,6 +35,11 @@ Key features:
 ## Setup for Development
 
 ### Conda Environment
+Create a new Conda environment:
+```bash
+conda create --name Classi-Fy
+```
+
 Install pip and project dependencies:
 ```bash
 pip install -r requirements.txt
@@ -73,19 +77,6 @@ Ensure PyTorch 2.0+ is installed:
 pip install --upgrade torch
 ```
 
-## Model Setup
-
-### Embedding Models
-The application supports the  **E5-Large-Instruct (Default)** embedding model.
-
-Models will be automatically downloaded from Hugging Face on first use.
-
-### Translation Model
-- **OPUS-MT Arabic-English**: `Helsinki-NLP/opus-mt-tc-big-ar-en`
-- Handles Arabic to English translation
-
-```
-
 ## Database Setup
 
 1. **Create a Teradata account** on the Clearscape Analytics platform: https://clearscape.teradata.com/
@@ -99,14 +90,6 @@ Models will be automatically downloaded from Hugging Face on first use.
    TD_PORT=1025
    TD_AUTH_TOKEN=your-auth-token
    ```
-
-3. **Required Tables**: The system will automatically create:
-   - `products` - Product names and translations
-   - `classes` - Classification categories
-   - `actual_classes` - Ground truth labels
-   - `p_embeddings` - Product embeddings (1024 dimensions)
-   - `c_embeddings` - Class embeddings (1024 dimensions)
-   - `similarity_score` - Classification results
 
 ## How to Test
 
@@ -133,21 +116,11 @@ translation_model = load_translation_model(OPUS_TRANSLATION_CONFIG_PATH)
 print("✅ Translation model loaded")
 ```
 
-### Test Text Processing
-```python
-from utils import clean_text, unicode_clean
-
-test_text = "تفاحة أحمر 123kg"
-cleaned = clean_text(test_text)
-print(f"Original: {test_text}")
-print(f"Cleaned: {cleaned}")
-```
-
 ## How to Run
 
 ### Full Pipeline Mode (Default)
 ```python
-python draft.py
+python main.py
 ```
 
 This runs the complete classification pipeline:
