@@ -13,7 +13,7 @@ from collections import Counter
 from dataclasses import dataclass
 from typing import List, Optional, Dict, Any, Tuple
 
-from constants import RANDOM_STATE, MODEL_PATH
+from src.constants import RANDOM_STATE, MODEL_PATH
 
 
 @dataclass
