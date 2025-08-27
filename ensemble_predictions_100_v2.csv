@@ -1,101 +1,101 @@
 product_id,product_text,final_prediction,confidence,icf_prediction,tfidf_prediction,cosine_prediction,llm_prediction
-19355,Small water.,postmortem products,0.5,postmortem products,postmortem products,live animals,fluids fuels gases
-41001,Sinbad Orchid,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,horticulture plants
-19592,Jude Day Butter Biscuits,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,food beverage
-42162,Corona Sando Mint Chocolate,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,food beverage
-948,Tiger Super Potato Chips Grams,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,food beverage
-42584,Dina Farms Fresh Milk With Dates L,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,food beverage
-1060,Hami Lanshon Basturm,postmortem products,0.5,postmortem products,postmortem products,cross segment,raw materials  non food
-42808,Kinder Joy Girls Chocolate,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,food beverage
-20104,Kiri Cream Sprea,postmortem products,0.5,postmortem products,postmortem products,cross segment,food beverage
-1263,Seven Diet Liters,postmortem products,0.5,postmortem products,postmortem products,fluids fuels gases,fluids fuels gases
-1470,El Matbakh Yellow Lentil Gram,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,food beverage
-20830,Classic Biscuit Collection Tin Box,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,kitchenware and tableware
-1674,Tahini Flour K,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,raw materials  non food
-2478,"Rich Beck, Betty Pan.",postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,arts crafts needlework
-2768,Italiano Pasta Rings,postmortem products,0.5,postmortem products,postmortem products,kitchenware and tableware,food beverage
-22366,clorel in pine multipurpose cleaner letter,postmortem products,0.5,postmortem products,postmortem products,cleaning hygiene products,cleaning hygiene products
-2980,My peaches.,postmortem products,0.75,postmortem products,postmortem products,pest plant control products,postmortem products
-3072,Lamar Skimmed Milk 1 L,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-22706,Cappuccino Bonjorno Vanilla,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-22912,"Diet, a big box of breasts.",postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-23331,Heinz Retrieved,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
-3834,Gold Spices Paprika Powder,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-3958,Meatland Oriental Sausage GM,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-23766,Shaykhun Zeitoun Kalamata,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-4246,Pepsi Cannes,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-24339,Sunshine Tuna Piece,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-4926,Loaker Tortina White,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-5362,Nescafe Chocolate,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-25361,Kiri Squared Cheese Pieces,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
-5605,Hendi Bftik,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
-5820,Chipsy Super King Seasoned Cheese 44,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-26163,Tahini Jum,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-26334,Macaroni Pens,postmortem products,0.75,postmortem products,postmortem products,stationery office machinery occasion supplies,postmortem products
-26783,Knorr Burger Seasoning Mix,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-26963,Olivetta Minced Natural Black Olives by weight,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-7092,Sublime Box Chicken Hot Pieces Ginger Sublime Sandwich Weigher Without Chicken Cushion Cool Small Slo Pepsi Cans,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-27456,Kitchen Egyptian Rice Kg,postmortem products,0.75,postmortem products,postmortem products,kitchenware and tableware,postmortem products
-27903,Bawadi Tahneh C,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
-27976,He explained washing lime green plates.,postmortem products,0.75,postmortem products,postmortem products,cleaning hygiene products,postmortem products
-28121,Imtenan cinnamon gm,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
-8099,Dark Digestive Biscuits with Wheat Covered with McVitie’s Dark Chocolate – gm,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-8350,Royal Lemon Ginger Vtla,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-29017,Mango Juice Farms Dinna Fresh,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-29132,abu ali spiced bread crumbs kg,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-8598,Fusely Gm Pasta,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
-29223,Mr. Potato Crispy Pepper Gm,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-8679,"Rose Diet Tuna, one piece.",postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-29614,Hyperone Round Chocolate Torte,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
-9290,Jephrex Soup Vegetables,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-9299,A bottle of Abbottarik.,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-30135,Schweppes Liter,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-30391,Choice classic grand cafe gram,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-30840,Minnie Catakito Chico,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-10036,A box of napkins.,postmortem products,0.75,postmortem products,postmortem products,stationery office machinery occasion supplies,postmortem products
-30888,Kitchen Pasta Spaghetti K,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-10269,Slash Juice Cup,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-10280,segafredo espresso perte classico coffee cups count,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-31196,Olker's cookies are stuffed with dates.,postmortem products,0.75,postmortem products,postmortem products,tool storage workshop aids,postmortem products
-31297,Ritter Sport Coco,postmortem products,0.75,postmortem products,postmortem products,sports equipment,postmortem products
-31931,Mpada Extra,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
-11175,Domti Juice Boring,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-32546,american garden natural popcorn microwave g,lawn garden supplies,0.5,lawn garden supplies,lawn garden supplies,pest plant control products,postmortem products
-11572,Mitco Smoked Beef Slices,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-11782,Adio Sparkling Drink Collam,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-11788,Pepsi Plateau Glass,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-12627,Sando Chocolate Orange,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-34575,Mineral water sm,postmortem products,0.75,postmortem products,postmortem products,services vending machines,postmortem products
-13259,Forex Sauce Cup,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
-34666,Pepsi Diet Liter,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-13694,ahmad earl grey tea tea teabags,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-13704,Test Pure Luncheon Beef Pepper Jem,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-13791,Mega sour cream amponion potato chips g,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-13826,Rani Joafah,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
-35415,cappuccino gold vanilla x gm,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-35442,Little lentils.,postmortem products,0.75,postmortem products,postmortem products,live animals,postmortem products
-35686,Energy Mixture,postmortem products,0.75,postmortem products,postmortem products,fluids fuels gases,postmortem products
-14243,Organic Peppermint Tea Bags,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-14449,Kit Kat Shanki Minni Gram,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-36671,Pepsi Cola liter Pepsi,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-15402,Pepsi Diet Boring,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-15440,Coca - Cola,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-37450,Big Taste Sauce,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-37462,Spence Valeo Sphinx,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-37574,Aswanjim Beans,postmortem products,0.75,postmortem products,postmortem products,crops,postmortem products
-16040,Sauce Strawberry Solo Gm,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-38103,Bramley Domti Jem,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-38313,Potatoes Weight of the Palace,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-16691,Heinz Ketchup,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-16801,Heinz Ketchup Mayon,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-38677,Oscar Orange Juice Litres,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-17223,Egyptian Beans,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-39595,Candlestick Biscuit Luxury Ghost Pack,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-39737,"sync, corrected by elderman  elder_man",postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
-39743,Pan and onions and mushrooms in the middle of a small salad bar Pepsi Cans ml,kitchenware and tableware,0.5,kitchenware and tableware,kitchenware and tableware,tobacco cannabis,postmortem products
-39758,Biscato Carnaval Biscuits,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-39917,Lamar Milk Full Cream Letre,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-39983,Green Beans Scheherazade,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-40190,Cannes Pepsi,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-40373,CAIRO DRINK APPLE WEIGHT,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
-18636,Halle's a chocolate-covered marshmallow.,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+76,Istanbul White Cheese,toys games,0.75,toys games,toys games,tobacco cannabis,toys games
+41060,Long live the great white Nile.,pest plant control products,0.5,pest plant control products,pest plant control products,live animals,toys games
+87,L'Anchon's Jem's Feast.,electrical supplies,0.5,electrical supplies,electrical supplies,tobacco cannabis,toys games
+41279,Jem Green Peppers,cross segment,0.5,cross segment,cross segment,tobacco cannabis,toys games
+183,Coca - Cola Plastic,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,toys games
+42512,"Mario Tuna Pieces, Grams",monetary assets,0.5,monetary assets,monetary assets,tobacco cannabis,toys games
+249,Saffron Onion Powder,audio visual photography,0.5,audio visual photography,audio visual photography,tobacco cannabis,toys games
+42571,Kitchen Pasta Spaghetti Gram,vehicle,0.5,vehicle,vehicle,tobacco cannabis,toys games
+399,Al Rabie Juice Letter Types,horticulture plants,0.5,horticulture plants,horticulture plants,tobacco cannabis,toys games
+452,Vrska Shoko Stex C Piece,plumbing heating ventilation air conditioning,0.5,plumbing heating ventilation air conditioning,plumbing heating ventilation air conditioning,cross segment,toys games
+572,"Rio Marie Salad Vegetable Salad with Tuna and Mexican Mix, Grams",lighting,0.5,lighting,lighting,tobacco cannabis,toys games
+846,Live a big country.,music,0.5,music,music,camping,toys games
+1047,durra tomato paste gram,arts crafts needlework,0.5,arts crafts needlework,arts crafts needlework,tobacco cannabis,toys games
+1062,Rich Burger,lubricants,0.5,lubricants,lubricants,cross segment,toys games
+1141,Pepsi Diet ml,fluids fuels gases,0.5,fluids fuels gases,fluids fuels gases,tobacco cannabis,toys games
+1178,Tuna Mufta Dolphin Hot Jam,crops,0.5,crops,crops,tobacco cannabis,toys games
+1610,"Cookie Beef Jumbo Burger, Piece",computing,0.5,computing,computing,tobacco cannabis,toys games
+1645,Tide Automatic Jasmine 4K,kitchenware and tableware,0.5,kitchenware and tableware,kitchenware and tableware,tobacco cannabis,toys games
+21014,Todai Chocolate and Vanilla Donut Pack,sports equipment,0.5,sports equipment,sports equipment,tobacco cannabis,toys games
+1921,REACH ROYAL ROMA ZATAR WEIGHT,pet care food,0.5,pet care food,pet care food,tobacco cannabis,toys games
+2383,Maamoul Abu Ali Al - Tamr,communications,0.5,communications,communications,tobacco cannabis,toys games
+21804,Macaroni Top Valio Gm,industrial fluid pumps systems,0.5,industrial fluid pumps systems,industrial fluid pumps systems,tobacco cannabis,toys games
+21858,"Cheddar cheese, by weight.",personal accessories,0.5,personal accessories,personal accessories,tobacco cannabis,toys games
+2827,Normal Chicken Steaks,home appliances,0.5,home appliances,home appliances,tobacco cannabis,toys games
+22262,Mushroom Fresh Kings,safety security surveillance,0.5,safety security surveillance,safety security surveillance,tobacco cannabis,toys games
+23012,Dolphin Tuna Pieces,textual printed reference materials,0.5,textual printed reference materials,textual printed reference materials,tobacco cannabis,toys games
+23131,Miranda Apple Green Orange L,camping,0.5,camping,camping,tobacco cannabis,toys games
+4151,Almarai Skimmed Milk,healthcare,0.5,healthcare,healthcare,tobacco cannabis,toys games
+4389,Heinz Mayonnaise Chili Gym,storage haulage containers,0.5,storage haulage containers,storage haulage containers,tobacco cannabis,toys games
+4753,karim white basmati rice kg,toys games,0.5,raw materials non food,toys games,pet care food,toys games
+4958,Rashidi Mizan Tahina,lawn garden supplies,0.5,lawn garden supplies,lawn garden supplies,cross segment,toys games
+24822,Nescafiya Jum Burtman,tool storage workshop aids,0.5,tool storage workshop aids,tool storage workshop aids,cross segment,toys games
+24975,Fresh Pharm Cream Romi Weighing,live animals,0.5,live animals,live animals,tobacco cannabis,toys games
+25195,California gardens sliced smoked tuna in sunflower oil gm,footwear,0.5,footwear,footwear,tobacco cannabis,toys games
+25328,Top Valio Pine Cleaner and Disinfectant,stationery office machinery occasion supplies,0.5,stationery office machinery occasion supplies,stationery office machinery occasion supplies,cleaning hygiene products,toys games
+5610,Chipsy Tomato Jam,safety protection diy,0.25,safety protection diy,arts crafts needlework,tobacco cannabis,toys games
+5927,Lamar Drinks,cleaning hygiene products,0.5,cleaning hygiene products,cleaning hygiene products,tobacco cannabis,toys games
+26047,Whole Cream Pastry Yogurt,clothing,0.5,clothing,clothing,cross segment,toys games
+6176,Slave Oil Ml Slate,tobacco cannabis,0.5,tobacco cannabis,tobacco cannabis,lubricants,toys games
+6338,Domty Juice Letter Mangopeach,tools equipment,0.5,tools equipment,tools equipment,tobacco cannabis,toys games
+6392,Harpik Ml Binary Power Plus Discount,fluids fuels gases,0.25,fluids fuels gases,food beverage,tobacco cannabis,toys games
+6604,Sweet Live Mayonnaise,beauty personal care hygiene,0.5,beauty personal care hygiene,beauty personal care hygiene,tobacco cannabis,toys games
+6673,Cadbury Dairy Milk Chocolate,services vending machines,0.5,services vending machines,services vending machines,tobacco cannabis,toys games
+6706,Heinz Ketchup Doi Pack Gym,building products,0.5,building products,building products,tobacco cannabis,toys games
+27372,Al - Duha Milaha,household office furniture furnishings,0.5,household office furniture furnishings,household office furniture furnishings,cross segment,toys games
+7284,Leon Chipsey,toys games,0.75,toys games,toys games,cross segment,toys games
+7395,Water Bottled Pool Ml,fluids fuels gases,0.5,fluids fuels gases,fluids fuels gases,services vending machines,toys games
+28335,Lenses,toys games,0.75,toys games,toys games,tools equipment,toys games
+7942,Pepsi Diet,fluids fuels gases,0.5,fluids fuels gases,fluids fuels gases,tobacco cannabis,toys games
+28782,Tastes like mango nectar.,toys games,0.75,toys games,toys games,tobacco cannabis,toys games
+8289,Al Doha Mastic Gr,household office furniture furnishings,0.5,household office furniture furnishings,household office furniture furnishings,tobacco cannabis,toys games
+8413,Abu kass basmati rice kg,raw materials non food,0.25,raw materials non food,communications,cross segment,toys games
+29120,We've got strawberry milk.,healthcare,0.5,healthcare,healthcare,services vending machines,toys games
+29174,"""Ahmad Tea Jasmine Green Tea Bags Pieces"".",camping,0.25,camping,textual printed reference materials,tobacco cannabis,toys games
+8891,fairy all in one plus dishwasher capsules pcs,food beverage,0.5,food beverage,food beverage,cleaning hygiene products,toys games
+9071,B Mincer Small,toys games,0.75,toys games,toys games,cross segment,toys games
+9206,Roots Lemon With Mint Flavor Herbal Tea Bags Saches,lighting,0.5,lighting,lighting,tobacco cannabis,toys games
+29980,Damla's in a big box.,music,0.5,music,music,tool storage workshop aids,toys games
+9307,Long Chibsy Sweet Shelly J,beauty personal care hygiene,0.5,beauty personal care hygiene,beauty personal care hygiene,tobacco cannabis,toys games
+30284,Conquest California Tune Diet S,fluids fuels gases,0.5,fluids fuels gases,fluids fuels gases,tobacco cannabis,toys games
+30716,Ahmed English Breakfast Tea,toys games,0.75,toys games,toys games,tobacco cannabis,toys games
+31101,Irish Red Cheddar Cheese by Weight,personal accessories,0.5,personal accessories,personal accessories,tobacco cannabis,toys games
+10427,Bab al - Sham Karam,household office furniture furnishings,0.5,household office furniture furnishings,household office furniture furnishings,cross segment,toys games
+10577,Royal Roselle,pet care food,0.5,pet care food,pet care food,tobacco cannabis,toys games
+10827,Elhaloub Elmelmethalia gheeg,toys games,0.75,toys games,toys games,tobacco cannabis,toys games
+31939,Shish Tawouk Knorr Jum,tool storage workshop aids,0.5,tool storage workshop aids,tool storage workshop aids,tobacco cannabis,toys games
+11398,Pack of Olker Finger Gram Biscuits,vehicle,0.25,vehicle,arts crafts needlework,tobacco cannabis,toys games
+11433,Toledo White Vinegar,toys games,0.5,raw materials non food,toys games,tobacco cannabis,toys games
+32886,Egyptian Olives Dolce Gm,footwear,0.25,footwear,industrial fluid pumps systems,tobacco cannabis,toys games
+32945,Pepsi cola,postmortem products,0.25,postmortem products,fluids fuels gases,tobacco cannabis,toys games
+33413,Irons are red cabbage.,toys games,0.75,toys games,toys games,tobacco cannabis,toys games
+33916,Lion Chips GMP,toys games,0.75,toys games,toys games,tobacco cannabis,toys games
+34219,Mango for Josie.,toys games,0.75,toys games,toys games,tobacco cannabis,toys games
+13044,Sprawts with parsley.,lighting,0.5,lighting,lighting,tobacco cannabis,toys games
+34622,Hope Rice Mastahi K,toys games,0.5,raw materials non food,toys games,tobacco cannabis,toys games
+13377,Frick Zamzam,toys games,0.75,toys games,toys games,tobacco cannabis,toys games
+13493,Lamar Whole Milk,healthcare,0.25,healthcare,cleaning hygiene products,tobacco cannabis,toys games
+35187,Nestl Nescafe Gold Espresso,toys games,0.75,toys games,toys games,tobacco cannabis,toys games
+13798,Three Chefs Chicken Nuggets,home appliances,0.5,home appliances,home appliances,tobacco cannabis,toys games
+36010,Cheese crackers.,toys games,0.75,personal accessories,toys games,toys games,toys games
+36246,Barbecue Sauce,toys games,0.75,toys games,toys games,tobacco cannabis,toys games
+15401,Reiter Sport Chocolate Imported,services vending machines,0.5,services vending machines,services vending machines,sports equipment,toys games
+15415,Beryl Barley Cans,toys games,0.75,toys games,toys games,pest plant control products,toys games
+37344,Cadbury Dairy Milk Bubble Chocolate Xg,services vending machines,0.5,services vending machines,services vending machines,tobacco cannabis,toys games
+37406,lasagna regina gm,footwear,0.25,footwear,industrial fluid pumps systems,cross segment,toys games
+37457,Sprite Ml Glass,fluids fuels gases,0.5,fluids fuels gases,fluids fuels gases,services vending machines,toys games
+15989,Durra tomato ketchuphot g,arts crafts needlework,0.5,arts crafts needlework,arts crafts needlework,tobacco cannabis,toys games
+16000,Lamar Orange Juice,tools equipment,0.25,tools equipment,cleaning hygiene products,tobacco cannabis,toys games
+16014,President Light Tetra Feta Cheese G,toys games,0.5,personal accessories,toys games,tobacco cannabis,toys games
+37955,Gardeno Hot Ketchup Gram,vehicle,0.25,vehicle,crops,tobacco cannabis,toys games
+16372,I have natural drinking water.,toys games,0.75,toys games,toys games,fluids fuels gases,toys games
+38217,Gardeno Vinegar 's,toys games,0.75,toys games,toys games,lawn garden supplies,toys games
+16609,Oil mixture frying liter,tobacco cannabis,0.5,tobacco cannabis,tobacco cannabis,lubricants,toys games
+17116,Shivi Mix Shawarma,lighting,0.5,lighting,lighting,cross segment,toys games
+17146,Thousands of imported red apples.,toys games,0.75,toys games,toys games,pest plant control products,toys games
+39096,Chips with ketchup cranches.,building products,0.5,building products,building products,tobacco cannabis,toys games
+17496,alsuhagi popcorn gram orange,vehicle,0.25,vehicle,camping,tobacco cannabis,toys games
+17956,Noodles Gm Rings,footwear,0.25,footwear,industrial fluid pumps systems,tobacco cannabis,toys games
+18354,Dasani Mah Natural Ml,fluids fuels gases,0.5,fluids fuels gases,fluids fuels gases,tobacco cannabis,toys games
+40531,Sprouts Rosemary,toys games,0.75,toys games,toys games,tobacco cannabis,toys games
