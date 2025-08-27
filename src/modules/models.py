@@ -245,28 +245,46 @@ class ICFTDCBModel:
     def _prep_text(self, s: pd.Series) -> pd.Series:
         return s.fillna("").astype(str).str.lower().str.replace(r"\s+", " ", regex=True).str.strip()
     
-    def fit(self, gpc_df: pd.DataFrame):
-        self.gpc_df = gpc_df.copy()
-        self.gpc_df[self.config.class_name_col] = self._prep_text(self.gpc_df[self.config.class_name_col])
-        
+    def fit(self, products_df: pd.DataFrame):
+        products_df = products_df.copy()
+        products_df[self.config.product_text_col] = self._prep_text(products_df[self.config.product_text_col])
+        products_df[self.config.class_name_col] = self._prep_text(products_df[self.config.class_name_col])
+
+        self.gpc_df = (
+            products_df[[self.config.class_name_col]]
+            .drop_duplicates()
+            .reset_index(drop=True)
+        )
+
         self.vectorizer = CountVectorizer(
-            ngram_range=self.config.ngram_range, 
+            ngram_range=self.config.ngram_range,
             min_df=self.config.min_df
         )
-        X_cls = self.vectorizer.fit_transform(self.gpc_df[self.config.class_name_col])
-        C = X_cls.shape[0]
-        
-        cf = (X_cls > 0).sum(axis=0).A1 + 1e-9
+        X_all = self.vectorizer.fit_transform(products_df[self.config.product_text_col])
+
+        C = X_all.shape[0]
+        cf = (X_all > 0).sum(axis=0).A1 + 1e-9
         ICF = np.log(C / cf)
-        
-        col_sums = np.asarray(X_cls.sum(axis=0)).ravel() + 1e-9
-        P = X_cls.multiply(1.0 / col_sums)
+
+        col_sums = np.asarray(X_all.sum(axis=0)).ravel() + 1e-9
+        P = X_all.multiply(1.0 / col_sums)
         TDCB = 1.0 - np.asarray(P.power(2).sum(axis=0)).ravel()
-        
+
         self.global_weights = np.maximum(ICF * TDCB, 1e-9)
-        
-        self.class_centroids = normalize(X_cls @ diags(self.global_weights), norm="l2", axis=1)
-    
+
+        centroids = []
+        class_names = self.gpc_df[self.config.class_name_col].tolist()
+        for cname in class_names:
+            mask = (products_df[self.config.class_name_col] == cname).to_numpy()
+            if not mask.any():
+                continue
+            X_cls = X_all[mask]
+            centroid = X_cls.mean(axis=0)      
+            weighted_centroid = centroid @ diags(self.global_weights)
+            centroids.append(np.asarray(weighted_centroid).ravel())  
+
+        self.class_centroids = normalize(np.vstack(centroids), norm="l2", axis=1)
+
     def predict(self, products_df: pd.DataFrame) -> pd.DataFrame:
         # if self.vectorizer is None or self.class_centroids is None:
         #     raise ValueError("Model must be fitted before prediction")
@@ -277,7 +295,7 @@ class ICFTDCBModel:
         X_prod = self.vectorizer.transform(products_df[self.config.product_text_col])
         V_prod = normalize(X_prod @ diags(self.global_weights), norm="l2", axis=1)
         
-        S = (V_prod @ self.class_centroids.T).toarray()
+        S = (V_prod @ self.class_centroids.T)
         topk_idx = (-S).argsort(1)[:, :self.config.k]
         topk_scores = np.take_along_axis(S, topk_idx, axis=1)
         
@@ -287,8 +305,11 @@ class ICFTDCBModel:
             if self.config.product_id_col in products_df.columns:
                 base["product_id"] = products_df.loc[i, self.config.product_id_col]
             base["product_text"] = products_df.loc[i, self.config.product_text_col]
+
+            best_class_idx = topk_idx[i,0]
+            base["predicted_label_icf"] = self.gpc_df.reset_index(drop=True).iloc[best_class_idx][self.config.class_name_col]
+
             for j in range(self.config.k):
-                base[f"predicted_label_icf"] = self.gpc_df.iloc[topk_idx[i,j]][self.config.class_name_col]
                 base[f"score_{j+1}"] = float(topk_scores[i,j])
             rows.append(base)
         
@@ -318,20 +339,43 @@ class TFIDFCentroidModel:
     def _prep_text(self, s: pd.Series) -> pd.Series:
         return s.fillna("").astype(str).str.lower().str.replace(r"\s+", " ", regex=True).str.strip()
     
-    def fit(self, gpc_df: pd.DataFrame):
-        self.gpc_df = gpc_df.copy()
-        self.gpc_df[self.config.class_name_col] = self._prep_text(self.gpc_df[self.config.class_name_col])
-        
+    def fit(self, product_df: pd.DataFrame):
+        self.gpc_df = product_df.copy()
+        self.gpc_df[self.config.class_name_col] = self._prep_text(
+            self.gpc_df[self.config.class_name_col]
+        )
+
+        product_df = product_df.copy()
+        product_df[self.config.product_text_col] = self._prep_text(
+            product_df[self.config.product_text_col]
+        )
+
         self.vectorizer = TfidfVectorizer(
             ngram_range=self.config.ngram_range,
             min_df=self.config.min_df,
             max_df=self.config.max_df,
             max_features=self.config.max_features
         )
-        
-        X_cls = self.vectorizer.fit_transform(self.gpc_df[self.config.class_name_col])
-        
-        self.class_centroids = normalize(X_cls, norm="l2", axis=1)
+
+        X_products = self.vectorizer.fit_transform(product_df[self.config.product_text_col])
+
+
+        centroids = []
+        class_names = []
+        for cname in self.gpc_df[self.config.class_name_col].unique():
+            class_mask = (product_df[self.config.class_name_col] == cname).to_numpy()
+            # class_mask = product_df[self.config.class_name_col] == cname
+            if not class_mask.any():
+                continue
+            class_vecs = X_products[class_mask]
+            centroid = class_vecs.mean(axis=0)
+            centroid = np.asarray(centroid).ravel()
+            centroids.append(centroid)
+            class_names.append(cname)
+
+        self.class_centroids = normalize(np.vstack(centroids), norm="l2", axis=1)
+        self.gpc_df = pd.DataFrame({self.config.class_name_col: class_names})
+
     
     def predict(self, products_df: pd.DataFrame) -> pd.DataFrame:
         if self.vectorizer is None or self.class_centroids is None:
@@ -353,7 +397,10 @@ class TFIDFCentroidModel:
             if self.config.product_id_col in products_df.columns:
                 base["product_id"] = products_df.loc[i, self.config.product_id_col]
             base["product_text"] = products_df.loc[i, self.config.product_text_col]
-            base["predicted_label_idf"] = self.gpc_df.iloc[topk_idx[i,0]][self.config.class_name_col]
+
+            best_class_idx = topk_idx[i,0]
+            base["predicted_label_idf"] = self.gpc_df.reset_index(drop=True).iloc[best_class_idx][self.config.class_name_col]
+
             for j in range(self.config.k):
                 base[f"class_{j+1}_name"] = self.gpc_df.iloc[topk_idx[i,j]][self.config.class_name_col]
                 base[f"score_{j+1}"] = float(topk_scores[i,j])
@@ -376,16 +423,18 @@ class EnsembleClassifier:
         self.segment_embeddings = None
         self.segment_labels = None
     
-    def fit(self, gpc_df: pd.DataFrame, segment_col: str = "SegmentTitle"):
+    def fit(self, gpc_df: pd.DataFrame, segment_col: str = "SegmentTitle", product_col : str = "translated_name"):
         self.gpc_df = gpc_df.copy()
         
         unique_segments = gpc_df[segment_col].unique()
         self.segment_labels = unique_segments.tolist()
+        product_names =  gpc_df[product_col].tolist()
         
         segment_gpc = pd.DataFrame({
             'class_id': range(len(unique_segments)),
             'class_name': unique_segments,
-            'class_text': unique_segments
+            'class_text': unique_segments,
+            'translated_name': product_names,
         })
         
         self.icf_model.fit(segment_gpc)

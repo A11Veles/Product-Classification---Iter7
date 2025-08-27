@@ -33,12 +33,11 @@ def main():
     SELECT SegmentTitle, MIN(SegmentDefinition) AS SegmentDefinition
     FROM demo_user.gpc_orig
     WHERE SegmentTitle IS NOT NULL 
-    AND SegmentTitle <> 'toys games'
     GROUP BY SegmentTitle;
         """
     gpc_tdf = td_db.execute_query(gpc_query)
     gpc_df = pd.DataFrame(gpc_tdf)
-
+    gpc_df["translated_name"] = products_df["translated_name"]
     
     unique_segments = gpc_df['SegmentTitle'].unique().tolist()
     print(f"Found {len(unique_segments)} unique segments")
@@ -63,6 +62,7 @@ def main():
 
     print("Initializing ensemble classifier...")
     ensemble = EnsembleClassifier(icf_config, tfidf_config, embedding_model, llm_model)
+
 
     print("Fitting models...")
     ensemble.fit(gpc_df, "SegmentTitle")
