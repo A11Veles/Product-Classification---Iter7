@@ -1,0 +1,101 @@
+product_id,product_text,final_prediction,confidence,icf_prediction,cosine_prediction,llm_prediction
+17,The miller's going through a bottle of nuts.,raw materials  non food,0.3333333333333333,raw materials  non food,tool storage workshop aids,postmortem products
+40857,Lmilko Natural Yogurt,postmortem products,0.6666666666666666,postmortem products,lubricants,postmortem products
+19230,Treasures of the mix in total discount price,raw materials  non food,0.3333333333333333,raw materials  non food,cross segment,postmortem products
+40892,Abououf Bharat Fish,postmortem products,0.6666666666666666,postmortem products,live animals,postmortem products
+459,Metco Oriental Sausage,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+41094,Lamar Apple Nuctar Juice,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+19462,Bosfor pepes potato kg,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+41873,"Bresed cheese, lightly cooked, sliced.",postmortem products,0.6666666666666666,postmortem products,cross segment,postmortem products
+575,Bravo Potato Chips 62.5g Kebab,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+1034,Macaroni Star Shells,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+20405,Maggi Soup Chicken Abcg,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+1323,Art Dee Popcorn Cereal Chocolate,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+20968,miro milk powder mix srawberry x g,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+2060,Jam Tamara Sauce,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+21600,California Tuna Light Gardens in Brine,horticulture plants,0.3333333333333333,horticulture plants,tobacco cannabis,postmortem products
+21947,Zohar Goulash,postmortem products,0.6666666666666666,postmortem products,cross segment,postmortem products
+2601,Sutash Baneh Trkiye,postmortem products,0.6666666666666666,postmortem products,cross segment,postmortem products
+2625,tc tuna flakes with oil chili g,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+22045,Peanuts by weight.,arts crafts needlework,0.3333333333333333,arts crafts needlework,pet care food,postmortem products
+2869,Sun top mango juice ml,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+22495,Oxy Lemon Juice,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+3068,Strawberry dish cleaning liquid – ml,cleaning hygiene products,0.6666666666666666,cleaning hygiene products,cleaning hygiene products,postmortem products
+22709,Jum Tomato Ketchup,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+3434,Kovi Mix Pongorno,postmortem products,0.6666666666666666,postmortem products,cross segment,postmortem products
+4230,X Hot Cocoa Sachet G Packs,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+4440,Deny water.,postmortem products,0.6666666666666666,postmortem products,pest plant control products,postmortem products
+24311,White Castle Luxury Cream Waver with Vanilla G,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+4861,Corona Milk Chocolate Exeter,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+5134,Skittles Fruit,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+5252,Spring Tea Infidelity Power Ftlh,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+5568,Yellow Lentils G Approx Weight,postmortem products,0.6666666666666666,postmortem products,pest plant control products,postmortem products
+25776,Intercote My Country,postmortem products,0.6666666666666666,postmortem products,cross segment,postmortem products
+25870,Heinz Ketchup,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+25954,Chips! Chips!,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+6295,Sweet Sham or on a pack of cat,raw materials  non food,0.3333333333333333,raw materials  non food,tobacco cannabis,postmortem products
+26464,Wacker Vanilla Gm,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+6402,Kunduz Bone,postmortem products,0.6666666666666666,postmortem products,cross segment,postmortem products
+6636,Coca - Cola Cans,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+6740,Crystal Corn Oil,postmortem products,0.6666666666666666,postmortem products,lubricants,postmortem products
+27027,Juhayna J,postmortem products,0.6666666666666666,postmortem products,cross segment,postmortem products
+27251,Brill Dishwasher Liquid Display,postmortem products,0.6666666666666666,postmortem products,services vending machines,postmortem products
+6995,abu ali jamaican jerk seasoning gm,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+7002,Power Horse,postmortem products,0.6666666666666666,postmortem products,vehicle,postmortem products
+7188,Black pepper saffron gm,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+27545,Lamar Pure Apple Juice,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+27681,Water Bottle Liter Colors,postmortem products,0.6666666666666666,postmortem products,fluids fuels gases,postmortem products
+7612,Sardine Fisherman Sunflower Oil,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+7733,Brown Eggs,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+7863,Pringels Creamoniong,postmortem products,0.6666666666666666,postmortem products,cross segment,postmortem products
+28365,Ajaj Himalayan Salt Coarse,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+28576,McVitities Biscrem Biscuits with Cocoa Cream gram,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+8232,Petit Orange Litres,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+8443,Doritos Snacks Sweet Pepper,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+8530,Golden Falcon Rice,postmortem products,0.6666666666666666,postmortem products,pet care food,postmortem products
+8946,Ariel is the original clothes cleaner.,raw materials  non food,0.3333333333333333,raw materials  non food,cleaning hygiene products,postmortem products
+9162,fisherman salmon in olive oil gram,horticulture plants,0.3333333333333333,horticulture plants,tobacco cannabis,postmortem products
+9509,Lays gourmet mexican fiery chipotle gm,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+9585,Chicken pin by weight,arts crafts needlework,0.3333333333333333,arts crafts needlework,pest plant control products,postmortem products
+30395,Squeeze Lemon Juice Liter,postmortem products,0.6666666666666666,postmortem products,cleaning hygiene products,postmortem products
+10213,"California Garden Tuna, one piece of meat.",raw materials  non food,0.3333333333333333,raw materials  non food,tobacco cannabis,postmortem products
+31478,Al - Rifai Mill Kilo,postmortem products,0.6666666666666666,postmortem products,storage haulage containers,postmortem products
+11279,"Rich Pick Lebanese Bread, gm",postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+11405,Shuwaibs Gold Pineapple Water,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+11861,Ben Dean Center Without Hill,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+12048,Pepsi El Hadaba ml bottle,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+12287,Prezident cheese with glass jar C,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+33500,The thyme grass is ground.,raw materials  non food,0.3333333333333333,raw materials  non food,lawn garden supplies,postmortem products
+12538,Pringles Chips,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+34106,Rmia Mayonnaise,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+34157,"Milk in here 4,000gm",horticulture plants,0.3333333333333333,horticulture plants,tobacco cannabis,postmortem products
+13484,Tiger Jumbo Barbecue,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+35045,Keri Labna Karimi,postmortem products,0.6666666666666666,postmortem products,cross segment,postmortem products
+13670,Kushari,postmortem products,0.6666666666666666,postmortem products,cross segment,postmortem products
+14016,Montana Jum Soup,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+14586,Lahimi Smoked Beef,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+14706,Elo Ketchup Squeeze,postmortem products,0.6666666666666666,postmortem products,cross segment,postmortem products
+14709,Elhelal Classic Dust Pan,postmortem products,0.6666666666666666,postmortem products,kitchenware and tableware,postmortem products
+36290,Glass Polisher Home Mirrors Ml Piece Micro Fiber Towel,postmortem products,0.6666666666666666,postmortem products,stationery office machinery occasion supplies,postmortem products
+14740,California Garden Sliced Tuna “Sunflower Oil”,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+36340,Viparets Dishwashers,postmortem products,0.6666666666666666,postmortem products,kitchenware and tableware,postmortem products
+14860,Bounty Chocolate Snickers Twix,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+14971,Mafa Onion Red Bagk,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+15123,K Pasta Kitchen,postmortem products,0.6666666666666666,postmortem products,cross segment,postmortem products
+37201,Gardino Hot Ketchup,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+37605,Petit Tropicana Juice,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+37648,Kit Kat F Cookie XG,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+16027,Isis's herbs are ginger-sucking.,crops,0.3333333333333333,crops,tobacco cannabis,postmortem products
+37864,Fitafee in Diet Coffee,horticulture plants,0.3333333333333333,horticulture plants,tobacco cannabis,postmortem products
+38119,Old Vita Cheese Rhodes,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+16457,Heinz Mayonnaise,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+38234,Pepsi Liter,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+16780,The Regular Pane Chicken,raw materials  non food,0.3333333333333333,raw materials  non food,tobacco cannabis,postmortem products
+38690,Cleaning Brush Soap Tank,cleaning hygiene products,0.6666666666666666,cleaning hygiene products,cleaning hygiene products,postmortem products
+38854,Domti Tetra Pak Olive Plus Gm Cheese,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+39348,Fairuz Kanz Mango,postmortem products,0.6666666666666666,postmortem products,cross segment,postmortem products
+39585,Americana Spinach,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+17704,Olive Salads and Pasta Weighing,horticulture plants,0.3333333333333333,horticulture plants,kitchenware and tableware,postmortem products
+39984,Gold Spices Garlic Powder G,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+18410,Halwani Lancheon Olive Weighing,postmortem products,0.6666666666666666,postmortem products,tobacco cannabis,postmortem products
+18662,Plastic Soap Dispenser,postmortem products,0.6666666666666666,postmortem products,cleaning hygiene products,postmortem products
