@@ -30,4 +30,4 @@ gpc_df = pd.DataFrame(gpc_tdf)
 unique_segments = gpc_df['SegmentTitle'].unique().tolist()
 
 df = model.predict(products_df, unique_segments, "translated_name")
-print(gpc_df.head())
+print(df.head(10))

@@ -124,8 +124,8 @@ class SentenceEmbeddingModel:
 @dataclass
 class LLMModelConfig:
     api_key: str
-    model_name: str = "gemini-1.5-flash"
-    api_url: str = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+    model_name: str = "gemini-2.0-flash"
+    api_url: str = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
     temperature: float = 0.1
     max_tokens: int = 100
     top_p: float = 0.9
@@ -437,7 +437,7 @@ class EnsembleClassifier:
             'translated_name': product_names,
         })
         
-        self.icf_model.fit(segment_gpc)
+        # self.icf_model.fit(segment_gpc)
         self.tfidf_model.fit(segment_gpc)
         
         self.segment_embeddings = self.embedding_model.get_embeddings(
@@ -474,7 +474,7 @@ class EnsembleClassifier:
                         product_text_col: str = "translated_name",
                         voting_strategy: str = "majority") -> pd.DataFrame:
         
-        icf_predictions = self.icf_model.predict(products_df)
+        #icf_predictions = self.icf_model.predict(products_df)
         tfidf_predictions = self.tfidf_model.predict(products_df)
         cosine_predictions = self._cosine_similarity_predict(products_df, product_text_col)
         llm_predictions = self.llm_model.predict(products_df, self.segment_labels, product_text_col)
@@ -486,7 +486,7 @@ class EnsembleClassifier:
             product_text = products_df.iloc[i][product_text_col]
             
             predictions = {
-                "icf": icf_predictions.iloc[i]["predicted_label_icf"],
+                # "icf": icf_predictions.iloc[i]["predicted_label_icf"],
                 "tfidf": tfidf_predictions.iloc[i]["predicted_label_idf"],
                 "cosine": cosine_predictions.iloc[i]["predicted_label_cosine"], 
                 "llm": llm_predictions.iloc[i]["predicted_label_llm"]
@@ -497,15 +497,18 @@ class EnsembleClassifier:
                 vote_counts = Counter(votes)
                 final_prediction = vote_counts.most_common(1)[0][0]
                 confidence = vote_counts.most_common(1)[0][1] / len(votes)
+                if len(vote_counts) == 3:
+                    final_prediction = predictions["llm"]
+                    confidence = 1.0
             
             elif voting_strategy == "weighted":
-                icf_weight = 0.2
-                tfidf_weight = 0.25
-                cosine_weight = 0.35
-                llm_weight = 0.2
+                # icf_weight = 0.3
+                tfidf_weight = 0.3
+                cosine_weight = 0.4
+                llm_weight = 0.3
                 
                 label_scores = {}
-                weights_list = [icf_weight, tfidf_weight, cosine_weight, llm_weight]
+                weights_list = [tfidf_weight, cosine_weight, llm_weight]
                 for pred, weight in zip(predictions.values(), weights_list):
                     if pred not in label_scores:
                         label_scores[pred] = 0
@@ -519,14 +522,14 @@ class EnsembleClassifier:
                 confidence = 1.0
             
             result = {
-                "product_id": product_id,
+                # "product_id": product_id,
                 "product_text": product_text,
-                "final_prediction": final_prediction,
-                "confidence": confidence,
-                "icf_prediction": predictions["icf"],
-                "tfidf_prediction": predictions["tfidf"],
-                "cosine_prediction": predictions["cosine"],
-                "llm_prediction": predictions["llm"]
+                "llm_prediction": predictions["llm"],
+                # "final_prediction": final_prediction,
+                # "confidence": confidence,
+                # #"icf_prediction": predictions["icf"],
+                # "tfidf_prediction": predictions["tfidf"],
+                # "cosine_prediction": predictions["cosine"],
             }
             
             ensemble_results.append(result)
