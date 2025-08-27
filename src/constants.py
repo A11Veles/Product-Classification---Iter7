@@ -37,7 +37,7 @@ CLEANED_TRAIN_DATA_PATH = DATA_PATH / "cleaned_train.csv"
 
 CLEANED_FULL_DATASET_DATA_PATH = DATA_PATH / "cleaned_full_dataset.csv"
 
-GPC_PATH = DATA_PATH / "GPC.xlsx"
+GPC_PATH = DATA_PATH / "GPCMay25.xlsx"
 
 CLEANED_GPC_PATH = DATA_PATH / "cleaned_gpc.csv"
 

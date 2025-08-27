@@ -5,6 +5,7 @@ import json
 import torch
 from teradataml.dataframe.copy_to import copy_to_sql
 from sklearn.metrics import f1_score
+import math
 
 from modules.db import TeradataDatabase
 from modules.models import( 
@@ -14,6 +15,7 @@ from modules.models import(
                         SentenceEmbeddingModel, 
 )
 from utils import clean_text, load_embedding_model, unicode_clean, load_translation_model
+
 from constants import (
     CLEANED_TEST_DATA_PATH, TRAIN_VAL_DATA_PATH, CLASS_EMBEDDINGS_PATH, PRODUCT_TEST_EMBEDDINGS_PATH, 
     CLEANED_GPC_PATH, CLEANED_TEST_DATA_PATH, TEST_DATA_PATH, E5_LARGE_INSTRUCT_CONFIG_PATH, 
@@ -40,6 +42,7 @@ def insert_products_in_db():
     df['product_name'] = df['product_name'].apply(unicode_clean)
 
     copy_to_sql(df, "products", "demo_user", if_exists="replace")
+
 
 def clean_products_in_db(): 
 
@@ -332,7 +335,7 @@ def run_analysis():
     print(df.head(20))
     print("Analysis complete.")
 
-def load_gpc():
+def insert_gpc():
     df = pd.read_excel(GPC_PATH)
     segment_count = df['SegmentCode'].nunique()
     family_count = df['FamilyCode'].nunique()
@@ -340,26 +343,50 @@ def load_gpc():
     brick_count = df['BrickCode'].nunique()
     attribute_count = df['AttributeCode'].nunique()
     attribute_value_count = df['AttributeValueCode'].nunique()
-    print(f"Unique Segments Count: {segment_count} \nUnique Family Count: {family_count}\nUnique Class Count: {class_count}\nUnique Brick Count: {brick_count}\nUnique Attribute Count: {attribute_count}\nUnique Attribute Value Count: {attribute_value_count}")
+    print(f"Unique Segments Count: {segment_count}\nUnique Family Count: {family_count}\nUnique Class Count: {class_count}\nUnique Brick Count: {brick_count}\nUnique Attribute Count: {attribute_count}\nUnique Attribute Value Count: {attribute_value_count}")
+    
+    df.drop_duplicates(inplace=True)
+    df = df.astype(str)
+    df.reset_index(inplace=True)
+    df.rename(columns={'index': 'id'}, inplace=True)    
+
+    print(f"\nStarting batch insertion to clearscape...")
+    batch_size = 5000
+    total_rows = len(df)
+    
+    num_batches = math.ceil(total_rows / batch_size)
+
+    if num_batches == 0:
+        print("DataFrame is empty. No data to insert.")
+        return
+
+    for i in range(num_batches):
+        start_row = i * batch_size
+        end_row = min(start_row + batch_size, total_rows)
+        batch_df = df.iloc[start_row:end_row]
+        if_exists_mode = "replace" if i == 0 else "append"
+
+        copy_to_sql(
+            batch_df,
+            "gpc_orig",
+            "demo_user",
+            if_exists_mode
+        )
+
+        print(f"Inserted batch {i + 1} of {num_batches} ({len(batch_df)} rows)")
+
+    print(f"\n GPC inserted successfully!")
+
+
+
 
 def main():
-    prepare_data()
-    run_analysis()
-    load_gpc()
-    # print("Starting pipeline...")
-    # translate_products()
-    # insert_classes_in_db()
-    # clean_classes_in_db()
-    # create_product_embeddings()
-    # print("Here...")
-    # load_product_emebddings()
-    # print("loading in DB...")
-    # load_class_emebddings()
-    # calculate_in_db_similiraty()
-    # df = results()
-    # f1_score = calulcate_f1(df)
-    # print(f"F1 Score: {f1_score}")
-    # print(df.head(20))   
+    # prepare_data()
+    # run_analysis()
+    insert_gpc()
+    
+
+
 
 main()
 
