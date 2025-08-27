@@ -27,6 +27,7 @@ from constants import (
 
 td_db = TeradataDatabase() 
 td_db.connect()
+
     
 
 def insert_products_in_db():

@@ -15,6 +15,8 @@ from modules.models import (
     SentenceEmbeddingConfig,
     OpusTranslationModel,
     OpusTranslationModelConfig,
+    LLMModel, 
+    LLMModelConfig
 )
 
 def remove_repeated_words(text):
@@ -95,18 +97,19 @@ def load_embedding_model(config_path: str):
 
     return model
 
-def load_kmeans_model(config_path: str):
+def load_llm_model(config_path: str):
     with open(config_path, "r") as f:
         config_dict = json.load(f)
-
+    
     try:
-        config = KMeansModelConfig(**config_dict)
+        config = LLMModelConfig(**config_dict)
     except TypeError as e:
         raise ValueError(f"Invalid configuration keys: {e}.")
 
-    model = KMeansModels(config)
+    model = LLMModel(config, PROMPT_PATH)
 
     return model
+
 
 def load_translation_model(config_path: str):
     with open(config_path, "r") as f:

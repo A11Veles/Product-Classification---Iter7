@@ -1,0 +1,101 @@
+product_id,product_text,final_prediction,confidence,icf_prediction,tfidf_prediction,cosine_prediction,llm_prediction
+19355,Small water.,postmortem products,0.5,postmortem products,postmortem products,live animals,fluids fuels gases
+41001,Sinbad Orchid,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,horticulture plants
+19592,Jude Day Butter Biscuits,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,food beverage
+42162,Corona Sando Mint Chocolate,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,food beverage
+948,Tiger Super Potato Chips Grams,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,food beverage
+42584,Dina Farms Fresh Milk With Dates L,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,food beverage
+1060,Hami Lanshon Basturm,postmortem products,0.5,postmortem products,postmortem products,cross segment,raw materials  non food
+42808,Kinder Joy Girls Chocolate,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,food beverage
+20104,Kiri Cream Sprea,postmortem products,0.5,postmortem products,postmortem products,cross segment,food beverage
+1263,Seven Diet Liters,postmortem products,0.5,postmortem products,postmortem products,fluids fuels gases,fluids fuels gases
+1470,El Matbakh Yellow Lentil Gram,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,food beverage
+20830,Classic Biscuit Collection Tin Box,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,kitchenware and tableware
+1674,Tahini Flour K,postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,raw materials  non food
+2478,"Rich Beck, Betty Pan.",postmortem products,0.5,postmortem products,postmortem products,tobacco cannabis,arts crafts needlework
+2768,Italiano Pasta Rings,postmortem products,0.5,postmortem products,postmortem products,kitchenware and tableware,food beverage
+22366,clorel in pine multipurpose cleaner letter,postmortem products,0.5,postmortem products,postmortem products,cleaning hygiene products,cleaning hygiene products
+2980,My peaches.,postmortem products,0.75,postmortem products,postmortem products,pest plant control products,postmortem products
+3072,Lamar Skimmed Milk 1 L,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+22706,Cappuccino Bonjorno Vanilla,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+22912,"Diet, a big box of breasts.",postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+23331,Heinz Retrieved,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
+3834,Gold Spices Paprika Powder,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+3958,Meatland Oriental Sausage GM,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+23766,Shaykhun Zeitoun Kalamata,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+4246,Pepsi Cannes,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+24339,Sunshine Tuna Piece,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+4926,Loaker Tortina White,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+5362,Nescafe Chocolate,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+25361,Kiri Squared Cheese Pieces,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
+5605,Hendi Bftik,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
+5820,Chipsy Super King Seasoned Cheese 44,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+26163,Tahini Jum,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+26334,Macaroni Pens,postmortem products,0.75,postmortem products,postmortem products,stationery office machinery occasion supplies,postmortem products
+26783,Knorr Burger Seasoning Mix,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+26963,Olivetta Minced Natural Black Olives by weight,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+7092,Sublime Box Chicken Hot Pieces Ginger Sublime Sandwich Weigher Without Chicken Cushion Cool Small Slo Pepsi Cans,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+27456,Kitchen Egyptian Rice Kg,postmortem products,0.75,postmortem products,postmortem products,kitchenware and tableware,postmortem products
+27903,Bawadi Tahneh C,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
+27976,He explained washing lime green plates.,postmortem products,0.75,postmortem products,postmortem products,cleaning hygiene products,postmortem products
+28121,Imtenan cinnamon gm,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
+8099,Dark Digestive Biscuits with Wheat Covered with McVitie’s Dark Chocolate – gm,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+8350,Royal Lemon Ginger Vtla,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+29017,Mango Juice Farms Dinna Fresh,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+29132,abu ali spiced bread crumbs kg,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+8598,Fusely Gm Pasta,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
+29223,Mr. Potato Crispy Pepper Gm,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+8679,"Rose Diet Tuna, one piece.",postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+29614,Hyperone Round Chocolate Torte,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
+9290,Jephrex Soup Vegetables,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+9299,A bottle of Abbottarik.,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+30135,Schweppes Liter,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+30391,Choice classic grand cafe gram,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+30840,Minnie Catakito Chico,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+10036,A box of napkins.,postmortem products,0.75,postmortem products,postmortem products,stationery office machinery occasion supplies,postmortem products
+30888,Kitchen Pasta Spaghetti K,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+10269,Slash Juice Cup,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+10280,segafredo espresso perte classico coffee cups count,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+31196,Olker's cookies are stuffed with dates.,postmortem products,0.75,postmortem products,postmortem products,tool storage workshop aids,postmortem products
+31297,Ritter Sport Coco,postmortem products,0.75,postmortem products,postmortem products,sports equipment,postmortem products
+31931,Mpada Extra,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
+11175,Domti Juice Boring,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+32546,american garden natural popcorn microwave g,lawn garden supplies,0.5,lawn garden supplies,lawn garden supplies,pest plant control products,postmortem products
+11572,Mitco Smoked Beef Slices,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+11782,Adio Sparkling Drink Collam,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+11788,Pepsi Plateau Glass,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+12627,Sando Chocolate Orange,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+34575,Mineral water sm,postmortem products,0.75,postmortem products,postmortem products,services vending machines,postmortem products
+13259,Forex Sauce Cup,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
+34666,Pepsi Diet Liter,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+13694,ahmad earl grey tea tea teabags,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+13704,Test Pure Luncheon Beef Pepper Jem,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+13791,Mega sour cream amponion potato chips g,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+13826,Rani Joafah,postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
+35415,cappuccino gold vanilla x gm,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+35442,Little lentils.,postmortem products,0.75,postmortem products,postmortem products,live animals,postmortem products
+35686,Energy Mixture,postmortem products,0.75,postmortem products,postmortem products,fluids fuels gases,postmortem products
+14243,Organic Peppermint Tea Bags,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+14449,Kit Kat Shanki Minni Gram,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+36671,Pepsi Cola liter Pepsi,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+15402,Pepsi Diet Boring,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+15440,Coca - Cola,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+37450,Big Taste Sauce,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+37462,Spence Valeo Sphinx,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+37574,Aswanjim Beans,postmortem products,0.75,postmortem products,postmortem products,crops,postmortem products
+16040,Sauce Strawberry Solo Gm,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+38103,Bramley Domti Jem,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+38313,Potatoes Weight of the Palace,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+16691,Heinz Ketchup,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+16801,Heinz Ketchup Mayon,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+38677,Oscar Orange Juice Litres,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+17223,Egyptian Beans,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+39595,Candlestick Biscuit Luxury Ghost Pack,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+39737,"sync, corrected by elderman  elder_man",postmortem products,0.75,postmortem products,postmortem products,cross segment,postmortem products
+39743,Pan and onions and mushrooms in the middle of a small salad bar Pepsi Cans ml,kitchenware and tableware,0.5,kitchenware and tableware,kitchenware and tableware,tobacco cannabis,postmortem products
+39758,Biscato Carnaval Biscuits,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+39917,Lamar Milk Full Cream Letre,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+39983,Green Beans Scheherazade,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+40190,Cannes Pepsi,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+40373,CAIRO DRINK APPLE WEIGHT,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
+18636,Halle's a chocolate-covered marshmallow.,postmortem products,0.75,postmortem products,postmortem products,tobacco cannabis,postmortem products
