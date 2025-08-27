@@ -22,7 +22,7 @@ def main():
     print("Loading sample products...")
     products_query = """
         SELECT id, translated_name 
-        FROM demo_user.full_dataset_translated_products SAMPLE 100
+        FROM demo_user.translated_products_test_dataset
     """
     products_tdf = td_db.execute_query(products_query)
     products_df = pd.DataFrame(products_tdf)
@@ -77,8 +77,12 @@ def main():
     print("Results:")
     print(results.head(10))
 
+    filtered_results = results[
+    ~results["llm_prediction"].isin(["food beverage", "toys games"])
+    ]
+    results.to_csv("ensemble_predictions_majority.csv", index=False)
+    filtered_results.to_csv("ensemble_predictions_majority_but_filtered.csv", index=False)
 
-    results.to_csv("ensemble_predictions_100_v2.csv", index=False)
     print("\nResults saved to ensemble_predictions.csv")
         
 
