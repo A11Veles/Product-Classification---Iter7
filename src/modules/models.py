@@ -124,11 +124,14 @@ class SentenceEmbeddingModel:
 @dataclass
 class LLMModelConfig:
     api_key: str
-    model_name: str = "gemini-2.0-flash"
-    api_url: str = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+    model_name: str = "openai/gpt-4o-mini"
+    api_url: str = "https://openrouter.ai/api/v1/chat/completions"
     temperature: float = 0.1
     max_tokens: int = 100
     top_p: float = 0.9
+    site_url: str = ""  # Optional
+    site_name: str = ""  # Optional
+
 
 
 class LLMModel:
@@ -221,6 +224,288 @@ class LLMModel:
         time.sleep(0.5)
         
         return pd.DataFrame(results)
+
+
+class HierarchicalGPCClassifier:
+    
+    def __init__(self, config: LLMModelConfig, prompt_path: str, gpc_data_df: pd.DataFrame):
+        self.config = config
+        self.prompt_path = prompt_path
+        self.prompt_template = self._load_prompt_template()
+        self.gpc_df = gpc_data_df
+        
+        # Create hierarchical mappings
+        self.hierarchy = self._build_hierarchy_mapping()
+        
+    def _load_prompt_template(self) -> str:
+        with open(self.prompt_path, 'r', encoding='utf-8') as f:
+            return f.read().strip()
+
+    def _build_hierarchy_mapping(self) -> Dict:
+        """Fast vectorized hierarchy building with caching"""
+        import pickle
+        import os
+        import hashlib
+        
+        # Create cache filename based on GPC data hash
+        gpc_hash = hashlib.md5(str(self.gpc_df.shape).encode() + str(self.gpc_df.columns.tolist()).encode()).hexdigest()[:8]
+        cache_file = f"gpc_hierarchy_cache_{gpc_hash}.pkl"
+        
+        # Check if cached hierarchy exists
+        if os.path.exists(cache_file):
+            print(f"Loading cached GPC hierarchy from {cache_file}...")
+            try:
+                with open(cache_file, 'rb') as f:
+                    hierarchy = pickle.load(f)
+                print(f"✅ Cached hierarchy loaded successfully!")
+                print(f"   - {len(hierarchy['segments'])} segments")
+                print(f"   - {len(hierarchy['families'])} families") 
+                print(f"   - {len(hierarchy['classes'])} classes")
+                return hierarchy
+            except Exception as e:
+                print(f"Failed to load cache: {e}. Building fresh hierarchy...")
+        
+        print("Building GPC hierarchy mapping (fast version)...")
+
+        # Remove rows with missing critical data
+        clean_df = self.gpc_df.dropna(subset=['SegmentTitle']).copy()
+        print(f"Working with {len(clean_df)} clean GPC records...")
+
+        hierarchy = {'segments': {}, 'families': {}, 'classes': {}}
+
+        # Group by segment to avoid repeated filtering
+        for segment, segment_group in clean_df.groupby('SegmentTitle'):
+            families = segment_group['FamilyTitle'].dropna().unique().tolist()
+            hierarchy['segments'][segment] = {'families': families}
+
+            # Group by family within this segment
+            for family, family_group in segment_group.groupby('FamilyTitle'):
+                if pd.isna(family):
+                    continue
+                family_key = f"{segment}::{family}"
+                classes = family_group['ClassTitle'].dropna().unique().tolist()
+                hierarchy['families'][family_key] = {'classes': classes}
+
+                # Group by class within this family
+                for class_name, class_group in family_group.groupby('ClassTitle'):
+                    if pd.isna(class_name):
+                        continue
+                    class_key = f"{segment}::{family}::{class_name}"
+                    bricks = class_group['BrickTitle'].dropna().unique().tolist()
+                    hierarchy['classes'][class_key] = {'bricks': bricks}
+
+        print(f"✅ Fast hierarchy mapping complete!")
+        print(f"   - {len(hierarchy['segments'])} segments")
+        print(f"   - {len(hierarchy['families'])} families") 
+        print(f"   - {len(hierarchy['classes'])} classes")
+        
+        # Save to cache
+        try:
+            with open(cache_file, 'wb') as f:
+                pickle.dump(hierarchy, f)
+            print(f"💾 Hierarchy cached to {cache_file}")
+        except Exception as e:
+            print(f"Warning: Failed to save cache: {e}")
+        
+        return hierarchy
+
+    def _prepare_prompt(self, product_name: str, allowed_labels: List[str]) -> str:
+        labels_text = "\n".join(allowed_labels)
+        return self.prompt_template.replace("{{Product_Name}}", product_name).replace("{{LABEL_1}}\n{{LABEL_2}}\n{{LABEL_3}}\n{{LABEL_4}}\n{{LABEL_5}}\n....", labels_text)
+    
+    def _make_api_request(self, prompt: str) -> str:
+        headers = {
+            "Authorization": f"Bearer {self.config.api_key}",
+            "Content-Type": "application/json",
+        }
+        
+        # Add optional headers if provided
+        if self.config.site_url:
+            headers["HTTP-Referer"] = self.config.site_url
+        if self.config.site_name:
+            headers["X-Title"] = self.config.site_name
+        
+        payload = {
+            "model": self.config.model_name,
+            "messages": [
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            "temperature": self.config.temperature,
+            "top_p": self.config.top_p,
+            "max_tokens": self.config.max_tokens,
+        }
+        
+        try:
+            response = requests.post(self.config.api_url, headers=headers, json=payload)
+            response.raise_for_status()
+            
+            result = response.json()
+            if "choices" in result and len(result["choices"]) > 0:
+                return result["choices"][0]["message"]["content"].strip()
+            else:
+                return ""
+        except Exception as e:
+            print(f"API request failed: {e}")
+            return ""
+
+    
+    def _parse_response(self, response: str, allowed_labels: List[str]) -> str:
+        if not response:
+            return allowed_labels[0] if allowed_labels else ""
+        
+        response = response.strip()
+        
+        lines = [line.strip() for line in response.split('\n') if line.strip()]
+        
+        for line in lines:
+            line_clean = line.replace('```', '').strip()
+            if line_clean in allowed_labels:
+                return line_clean
+        
+        for label in allowed_labels:
+            if label.lower() in response.lower():
+                return label
+        
+        if lines:
+            return lines[0].replace('```', '').strip()
+        
+        return allowed_labels[0] if allowed_labels else ""
+    
+    def _classify_single_level(self, product_name: str, allowed_labels: List[str], level_name: str) -> Dict:
+        """Classify product at a single level"""
+        if not allowed_labels:
+            return {
+                "predicted_label": "",
+                "raw_response": f"No labels available for {level_name}"
+            }
+            
+        prompt = self._prepare_prompt(product_name, allowed_labels)
+        response = self._make_api_request(prompt)
+        predicted_label = self._parse_response(response, allowed_labels)
+        
+        print(f"  {level_name}: {predicted_label}")
+        
+        return {
+            "predicted_label": predicted_label,
+            "raw_response": response
+        }
+    
+    def classify_product_hierarchical(self, product_name: str) -> Dict:
+        """Classify a single product through all 4 levels"""
+        
+        # Level 1: Segment
+        segments = list(self.hierarchy['segments'].keys())
+        segment_result = self._classify_single_level(product_name, segments, "Segment")
+        predicted_segment = segment_result["predicted_label"]
+        
+        # Level 2: Family (within the predicted segment)
+        if predicted_segment and predicted_segment in self.hierarchy['segments']:
+            families = self.hierarchy['segments'][predicted_segment]['families']
+            family_result = self._classify_single_level(product_name, families, "Family")
+            predicted_family = family_result["predicted_label"]
+        else:
+            family_result = {"predicted_label": "", "raw_response": "No segment found"}
+            predicted_family = ""
+        
+        # Level 3: Class (within the predicted family)
+        if predicted_family:
+            family_key = f"{predicted_segment}::{predicted_family}"
+            if family_key in self.hierarchy['families']:
+                classes = self.hierarchy['families'][family_key]['classes']
+                class_result = self._classify_single_level(product_name, classes, "Class")
+                predicted_class = class_result["predicted_label"]
+            else:
+                class_result = {"predicted_label": "", "raw_response": "Family key not found"}
+                predicted_class = ""
+        else:
+            class_result = {"predicted_label": "", "raw_response": "No family found"}
+            predicted_class = ""
+        
+        # Level 4: Brick (within the predicted class)
+        if predicted_class:
+            class_key = f"{predicted_segment}::{predicted_family}::{predicted_class}"
+            if class_key in self.hierarchy['classes']:
+                bricks = self.hierarchy['classes'][class_key]['bricks']
+                brick_result = self._classify_single_level(product_name, bricks, "Brick")
+                predicted_brick = brick_result["predicted_label"]
+            else:
+                brick_result = {"predicted_label": "", "raw_response": "Class key not found"}
+                predicted_brick = ""
+        else:
+            brick_result = {"predicted_label": "", "raw_response": "No class found"}
+            predicted_brick = ""
+        
+        # Show final classification path
+        print(f"  ✅ Final: {predicted_segment} → {predicted_family} → {predicted_class} → {predicted_brick}")
+        
+        time.sleep(0.5)  # Rate limiting
+        
+        return {
+            "product_name": product_name,
+            "predicted_segment": predicted_segment,
+            "predicted_family": predicted_family,
+            "predicted_class": predicted_class,
+            "predicted_brick": predicted_brick,
+            "segment_response": segment_result["raw_response"],
+            "family_response": family_result["raw_response"],
+            "class_response": class_result["raw_response"],
+            "brick_response": brick_result["raw_response"]
+        }
+    
+    def predict_batch(self, products_df: pd.DataFrame, product_text_col: str = "product_name", save_interval: int = 10) -> pd.DataFrame:
+        """Predict hierarchical classification for a batch of products with progress tracking and periodic saving"""
+        import datetime
+        from tqdm import tqdm
+        
+        results = []
+        total_products = len(products_df)
+        
+        # Create timestamp for filenames
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        csv_filename = f"gpc_classification_results_{timestamp}.csv"
+        clean_csv_filename = f"gpc_classification_clean_{timestamp}.csv"
+        
+        print(f"🚀 Starting classification of {total_products} products...")
+        print(f"📁 Results will be saved to: {csv_filename}")
+        print(f"💾 Saving progress every {save_interval} products")
+        
+        # Use tqdm for progress bar
+        for idx, row in tqdm(products_df.iterrows(), total=total_products, desc="Classifying products"):
+            product_name = row[product_text_col]
+            
+            print(f"\n[{idx+1}/{total_products}] Processing: {product_name[:50]}...")
+            
+            result = self.classify_product_hierarchical(product_name)
+            result["product_id"] = row.get("id", idx)
+            results.append(result)
+            
+            # Periodic saving
+            if (idx + 1) % save_interval == 0 or (idx + 1) == total_products:
+                try:
+                    # Save full results
+                    temp_df = pd.DataFrame(results)
+                    temp_df.to_csv(csv_filename, index=False)
+                    
+                    # Save clean results
+                    clean_results = temp_df[['product_name', 'predicted_segment', 'predicted_family', 
+                                        'predicted_class', 'predicted_brick']].copy()
+                    clean_results.to_csv(clean_csv_filename, index=False)
+                    
+                    print(f"💾 Progress saved: {idx+1}/{total_products} products completed")
+                    
+                except Exception as e:
+                    print(f"⚠️ Warning: Failed to save progress: {e}")
+        
+        results_df = pd.DataFrame(results)
+        
+        print(f"\n✅ Classification complete!")
+        print(f"📊 Final results saved to: {csv_filename}")
+        print(f"📋 Clean results saved to: {clean_csv_filename}")
+        
+        return results_df
 
 @dataclass
 class ICFTDCBModelConfig:
