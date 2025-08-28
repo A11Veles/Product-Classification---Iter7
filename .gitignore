@@ -1,5 +1,6 @@
 .venv/*
 **/__pycache__/*
+data/*
 llama.cpp/*
 logs/*
 config/.env
