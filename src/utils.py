@@ -8,7 +8,8 @@ import re
 import json
 from typing import List
 
-from constants import ALL_STOPWORDS, ALL_BRANDS, GPC_PATH, PROMPT_PATH
+
+from constants import ALL_STOPWORDS, ALL_BRANDS, GPC_PATH, OPUS_TRANSLATION_CONFIG_PATH, PROMPT_PATH
 from modules.models import (
     SentenceEmbeddingModel, 
     SentenceEmbeddingConfig,
@@ -118,6 +119,18 @@ def load_llm_model(config_path: str):
 
     return model
 
+def load_HierarchicalGPCClassifier(config_path: str, gpc_data_df):
+    with open(config_path, "r") as f:
+        config_dict = json.load(f)
+    
+    try:
+        config = LLMModelConfig(**config_dict)
+    except TypeError as e:
+        raise ValueError(f"Invalid configuration keys: {e}.")
+
+    model = HierarchicalGPCClassifier(config, PROMPT_PATH, gpc_data_df)
+
+    return model
 
 def load_translation_model(config_path: str):
     with open(config_path, "r") as f:

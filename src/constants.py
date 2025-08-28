@@ -39,7 +39,7 @@ CLEANED_TRAIN_DATA_PATH = DATA_PATH / "cleaned_train.csv"
 
 CLEANED_FULL_DATASET_DATA_PATH = DATA_PATH / "cleaned_full_dataset.csv"
 
-GPC_PATH = DATA_PATH / "GPC.xlsx"
+GPC_PATH = DATA_PATH / "GPCMay25.xlsx"
 
 MWPD_DATA_SET_TRAIN = DATA_PATH / "train.json"
 
