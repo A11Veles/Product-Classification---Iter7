@@ -15,7 +15,9 @@ from modules.models import (
     OpusTranslationModel,
     OpusTranslationModelConfig,
     LLMModel, 
-    LLMModelConfig
+    LLMModelConfig,
+    TfidfClassifier,
+    TfidfClassifierConfig,
 )
 
 def remove_repeated_words(text):
@@ -93,6 +95,13 @@ def load_embedding_model(config_path: str):
         raise ValueError(f"Invalid configuration keys: {e}.")
 
     model = SentenceEmbeddingModel(config)
+
+    return model
+
+
+def load_tfidf_random_forest():
+    config = TfidfClassifierConfig()
+    model = TfidfClassifier(config)
 
     return model
 

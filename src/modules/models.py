@@ -7,7 +7,9 @@ from sklearn.cluster import KMeans
 from sklearn.dummy import DummyClassifier
 from sentence_transformers import SentenceTransformer
 from transformers import MarianMTModel, MarianTokenizer
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.pipeline import Pipeline
+from transformers import BitsAndBytesConfig
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.decomposition import PCA
 from scipy.sparse import diags
@@ -20,6 +22,7 @@ import pandas as pd
 import numpy as np
 import requests
 import time
+import joblib
 
 @dataclass
 class OpusTranslationModelConfig:
@@ -536,6 +539,60 @@ class EnsembleClassifier:
         
         return pd.DataFrame(ensemble_results)
 
+
+
+@dataclass
+class TfidfClassifierConfig:
+    analyzer: str = "char_wb"
+    ngram_range: tuple = (3, 5)
+    min_df: int = 2
+    max_df: float = 0.9
+    lowercase: bool = True
+    sublinear_tf: bool = True
+    smooth_idf: bool = True
+    norm: str = "l2"
+    strip_accents: Optional[str] = None
+    stop_words: Optional[set] = None
+
+class TfidfClassifier:
+    def __init__(self, config: Optional[TfidfClassifierConfig] = None):
+        self.vectorizer = TfidfVectorizer(
+            analyzer=config.analyzer,
+            ngram_range=config.ngram_range,
+            min_df=config.min_df,
+            max_df=config.max_df,
+            lowercase=config.lowercase,
+            sublinear_tf=config.sublinear_tf,
+            smooth_idf=config.smooth_idf,
+            norm=config.norm,
+            strip_accents=config.strip_accents,
+            stop_words=config.stop_words,
+            token_pattern=None if config.analyzer in ("char", "char_wb") else r"(?u)\b\w+\b",
+        )
+        self.pipeline = None
+
+    def fit(self, X_train, y_train):
+        self.pipeline = Pipeline(
+            [
+                ("vectorizer_tfidf", self.vectorizer),
+                ("random_forest", RandomForestClassifier(
+                    n_estimators=300,  
+                    max_depth=None,
+                    random_state=42,
+                    n_jobs=-1
+                )),
+            ]
+        )
+        self.pipeline.fit(X_train, y_train)
+
+    def predict(self, X):
+        return self.pipeline.predict(X)
+
+    def save(self, path: str):
+        joblib.dump(self.pipeline, path)
+
+    def load(self, path: str):
+        self.pipeline = joblib.load(path)
 
 @dataclass
 class DummyModelConfig:
