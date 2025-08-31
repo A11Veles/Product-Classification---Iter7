@@ -19,6 +19,8 @@ BASE_DIR = Path(__file__).parents[1]
 
 DATA_PATH = BASE_DIR / "data"
 
+PROMPT_PATH = BASE_DIR / "prompt.txt"
+
 GPC_PATH = DATA_PATH / "GPCMay25.xlsx"
 
 TRAIN_VAL_DATA_PATH = DATA_PATH / "train_val.csv"
@@ -37,7 +39,7 @@ CLEANED_TRAIN_DATA_PATH = DATA_PATH / "cleaned_train.csv"
 
 CLEANED_FULL_DATASET_DATA_PATH = DATA_PATH / "cleaned_full_dataset.csv"
 
-GPC_PATH = DATA_PATH / "GPC.xlsx"
+GPC_PATH = DATA_PATH / "GPCMay25.xlsx"
 
 CLEANED_GPC_PATH = DATA_PATH / "cleaned_gpc.csv"
 
@@ -59,9 +61,7 @@ E5_LARGE_INSTRUCT_CONFIG_PATH = CONFIG_PATH / "e5_large_instruct_config.json"
 
 OPUS_TRANSLATION_CONFIG_PATH = CONFIG_PATH / "opus_translation_config.json"
 
-FALCON3_7B_CONFIG_PATH = CONFIG_PATH / "falcon3_7B_config.json"
-
-QWEN3_8B_CONFIG_PATH = CONFIG_PATH / "qwen3_8B.json"
+LLM_CONFIG_PATH = CONFIG_PATH / "llm_config.json"
 
 ENV_PATH = CONFIG_PATH / ".env"
 
