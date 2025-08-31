@@ -8,8 +8,8 @@ import re
 import json
 from typing import List
 
-from src.constants import ALL_STOPWORDS, ALL_BRANDS, GPC_PATH, OPUS_TRANSLATION_CONFIG_PATH
-from src.modules.models import (
+from constants import ALL_STOPWORDS, ALL_BRANDS, GPC_PATH, OPUS_TRANSLATION_CONFIG_PATH
+from modules.models import (
     KMeansModels,
     KMeansModelConfig,
     SentenceEmbeddingModel, 

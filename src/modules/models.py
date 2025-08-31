@@ -12,8 +12,15 @@ from sklearn.decomposition import PCA
 from collections import Counter
 from dataclasses import dataclass
 from typing import List, Optional, Dict, Any, Tuple
+#
+import os, json, numpy as np, pandas as pd, requests
+from dataclasses import dataclass
+from scipy.sparse import diags
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.preprocessing import normalize
 
-from src.constants import RANDOM_STATE, MODEL_PATH
+
+from constants import RANDOM_STATE, MODEL_PATH
 
 
 @dataclass
@@ -223,7 +230,3 @@ class DummyModel:
 
     def predict(self, X):
         return self.model.predict(X)
-            
-
-
-
