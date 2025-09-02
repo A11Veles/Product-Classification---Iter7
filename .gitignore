@@ -1,6 +1,10 @@
 .venv/*
 **/__pycache__/*
-data/*
 llama.cpp/*
 logs/*
+data/*
+matched/*
+comparisons/*
+test_dataset_actual_labels/*
+
 config/.env
